@@ -1,2 +1,2 @@
 # fancy-project-name-generator
-A 
+An opinionated Java based project codename generator.
