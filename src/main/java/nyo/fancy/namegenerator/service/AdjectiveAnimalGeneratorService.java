@@ -19,11 +19,12 @@ public class AdjectiveAnimalGeneratorService implements GeneratorService {
 
 	@Override
 	public String getProjectName(Character character) {
+		Character lowerCased = Character.toLowerCase(character);
 
-		validate(character);
+		validate(lowerCased);
 
-		Adjective adjective = getAdjectiveStartingWith(character);
-		Animal animal = getAnimalStartingWith(character);
+		Adjective adjective = getAdjectiveStartingWith(lowerCased);
+		Animal animal = getAnimalStartingWith(lowerCased);
 
 		return capitalize(adjective.getAdjective() + " " + animal.getName());
 	}
