@@ -25,11 +25,8 @@ public class LetterSwitchingAdjectiveAnimalGeneratorService implements Generator
 
         Adjective adjective = getAdjectiveStartingWith(lowerCased);
 
-
         Character nextCharacter = getNext(lowerCased);
         Animal animal = getAnimalStartingWith(nextCharacter);
-
-        //Animal animal = getAnimalStartingWith(getNext(lowerCased));
 
         return capitalize(adjective.getAdjective() + " " + animal.getName());
     }
@@ -54,9 +51,6 @@ public class LetterSwitchingAdjectiveAnimalGeneratorService implements Generator
 
 
     private Character getNext(Character character) {
-        if (!Character.isLetter(character)){
-            throw new IllegalArgumentException("Character " + character + " should be a letter.");
-        }
         if (character.equals('z')){
             return 'a';
         }

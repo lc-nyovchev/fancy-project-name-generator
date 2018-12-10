@@ -3,7 +3,6 @@ package nyo.fancy.namegenerator.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nyo.fancy.namegenerator.domain.Adjective;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.RandomUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
