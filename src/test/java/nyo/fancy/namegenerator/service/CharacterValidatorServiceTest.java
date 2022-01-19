@@ -1,52 +1,53 @@
 package nyo.fancy.namegenerator.service;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CharacterValidatorServiceTest {
 
 	private CharacterValidatorService characterValidatorService;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		characterValidatorService = new CharacterValidatorService();
 	}
 
 	@Test
 	public void testIsLetter() {
-		assertTrue("a is a letter", characterValidatorService.isLetter('a'));
-		assertTrue("U is a letter", characterValidatorService.isLetter('H'));
-		assertTrue("u is a letter", characterValidatorService.isLetter('u'));
-		assertTrue("Z is a letter", characterValidatorService.isLetter('Z'));
-		assertFalse("- is not a letter", characterValidatorService.isLetter('-'));
-		assertFalse("1 is not a letter", characterValidatorService.isLetter('1'));
-		assertFalse("' is not a letter", characterValidatorService.isLetter('\''));
-		assertFalse("\" is not a letter", characterValidatorService.isLetter('"'));
-		assertFalse("$ is not a letter", characterValidatorService.isLetter('$'));
+		assertTrue(characterValidatorService.isLetter('a'), "a is a letter");
+		assertTrue(characterValidatorService.isLetter('H'), "U is a letter");
+		assertTrue(characterValidatorService.isLetter('u'), "u is a letter");
+		assertTrue(characterValidatorService.isLetter('Z'), "Z is a letter");
+		assertFalse(characterValidatorService.isLetter('-'), "- is not a letter");
+		assertFalse(characterValidatorService.isLetter('1'), "1 is not a letter");
+		assertFalse(characterValidatorService.isLetter('\''), "' is not a letter");
+		assertFalse(characterValidatorService.isLetter('"'), "\" is not a letter");
+		assertFalse(characterValidatorService.isLetter('$'), "$ is not a letter");
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void testIsLetterWithNullInput() {
-		characterValidatorService.isLetter(null);
+		assertThrows(NullPointerException.class, () -> characterValidatorService.isLetter(null));
 	}
 
 	@Test
 	public void testIsNumber() {
-		assertFalse("a is not a number", characterValidatorService.isNumber('a'));
-		assertFalse("H is not a number", characterValidatorService.isNumber('H'));
-		assertFalse("u is not a number", characterValidatorService.isNumber('u'));
-		assertFalse("Z is not a number", characterValidatorService.isNumber('Z'));
-		assertFalse("- is not a number", characterValidatorService.isNumber('-'));
-		assertTrue("1 is a number", characterValidatorService.isNumber('1'));
-		assertFalse("' is not a number", characterValidatorService.isNumber('\''));
-		assertFalse("\" is not a number", characterValidatorService.isNumber('"'));
+		assertFalse(characterValidatorService.isNumber('a'), "a is not a number");
+		assertFalse(characterValidatorService.isNumber('H'), "H is not a number");
+		assertFalse(characterValidatorService.isNumber('u'), "u is not a number");
+		assertFalse(characterValidatorService.isNumber('Z'), "Z is not a number");
+		assertFalse(characterValidatorService.isNumber('-'), "- is not a number");
+		assertTrue(characterValidatorService.isNumber('1'), "1 is a number");
+		assertFalse(characterValidatorService.isNumber('\''), "' is not a number");
+		assertFalse(characterValidatorService.isNumber('"'), "\" is not a number");
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void testIsNumberWithNullInput() {
-		characterValidatorService.isNumber(null);
+		assertThrows(NullPointerException.class, () -> characterValidatorService.isNumber(null));
 	}
 }
